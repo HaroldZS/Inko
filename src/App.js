@@ -1,5 +1,14 @@
+import { HashRouter, Routes, Route } from "react-router-dom";
+import { Menu } from "./Components/Menu";
+
 function App() {
-  return <p>Hola</p>;
+  return (
+    <>
+      <HashRouter>
+        <Menu />
+      </HashRouter>
+    </>
+  );
 }
 
 export default App;
