@@ -5,6 +5,7 @@ export const blogs = [
     image:
       "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     id: 1,
+    userId: 1,
   },
   {
     title: "Exploring the Mind",
@@ -12,6 +13,7 @@ export const blogs = [
     image:
       "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     id: 2,
+    userId: 2,
   },
   {
     title: "Purposeful Travel",
@@ -19,5 +21,6 @@ export const blogs = [
     image:
       "https://images.pexels.com/photos/2787341/pexels-photo-2787341.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     id: 3,
+    userId: 3,
   },
 ];
