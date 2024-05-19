@@ -5,6 +5,7 @@ export const users = [
     lastname: "Zurita Cruz",
     email: "amiecruz@gmail.com",
     password: "amiecruz",
+    role: "admin",
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ export const users = [
     lastname: "Zurita Simon",
     email: "haroldzurita@gmail.com",
     password: "haroldzurita",
+    role: "admin",
   },
   {
     id: 3,
@@ -19,5 +21,6 @@ export const users = [
     lastname: "Cruz Fernandez",
     email: "marcelincruz@gmail.com",
     password: "marcelincruz",
+    role: "user",
   },
 ];
