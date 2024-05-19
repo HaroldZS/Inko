@@ -4,6 +4,7 @@ import { HomePage } from "./Components/HomePage";
 import { BlogPage } from "./Components/BlogPage";
 import { LoginPage } from "./Components/LoginPage";
 import { TestPage } from "./Components/TestPage";
+import { SignInPage } from "./Components/SignInPage";
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/test" element={<TestPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/log-in" element={<LoginPage />} />
+          <Route path="/sign-in" element={<SignInPage />} />
         </Routes>
       </HashRouter>
     </>

@@ -7,16 +7,18 @@ function LoginPage() {
         <h1 className="mb-4 mt-2 text-[12px] font-semibold text-[#76ABAE]">
           Welcome Back!
         </h1>
-        <form className="flex w-[163px] flex-col gap-2">
+        <form className="flex w-[163px] flex-col gap-2 text-[10px] text-[#EEEEEE]">
           <input
-            className="rounded-[6px] border-[0.5px] border-[#EEEEEE]/20 bg-transparent placeholder-[#EEEEEE] placeholder:pl-2 placeholder:text-[10px]"
+            type="text"
+            className="h-[23px] rounded-[6px] border-[0.5px] border-[#EEEEEE]/20 bg-transparent pl-2 placeholder-[#EEEEEE] placeholder:text-[10px] focus:outline-none"
             placeholder="Email"
           />
           <input
-            className="rounded-[6px] border-[0.5px] border-[#EEEEEE]/20 bg-transparent placeholder-[#EEEEEE] placeholder:pl-2 placeholder:text-[10px]"
+            type="password"
+            className="h-[23px] rounded-[6px] border-[0.5px] border-[#EEEEEE]/20 bg-transparent pl-2 placeholder-[#EEEEEE] placeholder:text-[10px] focus:outline-none"
             placeholder="Password"
           />
-          <button className="mb-4 h-[23px] rounded-[6px] bg-[#76ABAE] text-center text-[10px] font-medium text-[#EEEEEE]">
+          <button className="mb-4 mt-1 h-[23px] rounded-[6px] bg-[#76ABAE] text-center font-medium">
             Log In
           </button>
         </form>
