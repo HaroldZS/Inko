@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { users } from "../data/users";
 
-function LoginPage() {
+function LogInPage() {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -70,4 +70,4 @@ function LoginPage() {
   );
 }
 
-export { LoginPage };
+export { LogInPage };
