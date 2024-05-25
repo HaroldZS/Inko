@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-// import { useAuthUser } from "../hooks/useAuthUser";
+import { useAuth } from "../hooks/useAuth";
 
 function LogInPage({ getUsers, setAuth }) {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
   });
+
+  const { login } = useAuth(setAuth);
 
   const setEmail = (e) => {
     const email = e.target.value;
@@ -25,15 +27,14 @@ function LogInPage({ getUsers, setAuth }) {
 
   const onLogIn = (e) => {
     e.preventDefault();
-    setAuth({ newUser: "Hello" });
-    // const users = getUsers();
+    const users = getUsers();
 
-    // const findUser = users.find(
-    //   (user) =>
-    //     user.email === userData.email && user.password === userData.password,
-    // );
+    const findUser = users.find(
+      (user) =>
+        user.email === userData.email && user.password === userData.password,
+    );
 
-    // findUser ? login(findUser.id) : console.log("The user doesn't exists");
+    findUser ? login(findUser) : console.log("The user doesn't exists");
   };
 
   useEffect(() => {}, []);

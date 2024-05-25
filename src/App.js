@@ -11,14 +11,13 @@ import { useLocalStorage } from "./hooks/useLocalStorage";
 function App() {
   const {
     item,
-    setItem,
     getStorageItem: getUsers,
     setStorageItem,
     addItem: addUser,
   } = useLocalStorage("users", []);
 
   const { getStorageItem: getAuth, addItem: setAuth } = useLocalStorage(
-    "newUser",
+    "auth",
     {},
   );
 
@@ -27,7 +26,7 @@ function App() {
       <HashRouter>
         <Menu />
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage getAuth={getAuth} />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/test" element={<TestPage />} />
           <Route

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { blogs } from "../data/blogs";
 
-function HomePage() {
-  const [testState, setTestState] = useState(true);
+function HomePage({ getAuth }) {
+  const user = getAuth();
 
   return (
     <>
@@ -10,17 +10,19 @@ function HomePage() {
         <div className="flex w-[216px] flex-col gap-3">
           <div className="flex h-[65px] items-center justify-center rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#31363F]">
             <p className="text-[12px] text-[#EEEEEE]">
-              {testState ? "Welcome Back, Harold :)" : "Welcome to Inko's blogpost!"}
+              {user
+                ? `Welcome Back, ${user.name} :)`
+                : "Welcome to Inko's blogpost!"}
             </p>
           </div>
-          {testState && (
+          {user && (
             <button className="h-[23px] rounded-[6px] border-[0.5px] border-[#EEEEEE]/20 bg-[#76ABAE] text-[10px] font-medium text-[#EEEEEE]">
               Wanna Ink Something
             </button>
           )}
         </div>
       </div>
-      {testState && (
+      {user && (
         <div className="mt-[24px] flex justify-center">
           <div className="grid w-[343px] grid-cols-1">
             <p className="mb-[16px] text-[10px] font-medium text-[#EEEEEE]">
