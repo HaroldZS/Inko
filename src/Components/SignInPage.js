@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useLocalStorage } from "../hooks/useLocalStorage";
 
-function SignInPage() {
+function SignInPage({ addUser }) {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [userPayload, setUserPayload] = useState({
-    id: 2,
+    id: 3,
     name: "",
     lastname: "",
     email: "",
     password: "",
     role: "user",
   });
-
-  const usersLS = useLocalStorage("users");
 
   const setName = (e) =>
     setUserPayload({
@@ -44,7 +41,7 @@ function SignInPage() {
     e.preventDefault();
     if (userPayload.password === repeatPassword) {
       console.log("Created user");
-      usersLS.addItem(userPayload);
+      addUser(userPayload);
     } else {
       console.log("Incorrect password match");
     }

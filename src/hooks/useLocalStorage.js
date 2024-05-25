@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 
-function useLocalStorage(tag) {
-  const [item, setItem] = useState(JSON.parse(localStorage.getItem(tag)) || []);
+function useLocalStorage(tag, initialState) {
+  const storedValue = JSON.parse(localStorage.getItem(tag));
+  const [item, setItem] = useState(
+    storedValue !== null ? storedValue : initialState,
+  );
 
   const getStorageItem = () => {
     return JSON.parse(localStorage.getItem(tag));
@@ -13,21 +16,24 @@ function useLocalStorage(tag) {
   };
 
   const addItem = (newItem) => {
-    const items = getStorageItem();
-    const newArray = [...items, newItem];
-    setStorageItem(newArray);
+    const items = getStorageItem() || initialState;
+    if (Array.isArray(items)) {
+      const newArray = [...items, newItem];
+      setStorageItem(newArray);
+    } else {
+      setStorageItem(newItem);
+    }
   };
 
   useEffect(() => {
-    if (!getStorageItem()) {
-      setStorageItem(item);
+    if (storedValue === null) {
+      setStorageItem(initialState);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tag, item]);
+  }, [tag, initialState, storedValue]);
 
   return {
     item,
-    setItem,
     getStorageItem,
     setStorageItem,
     addItem,

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { users } from "../data/users";
+// import { useAuthUser } from "../hooks/useAuthUser";
 
-function LogInPage() {
+function LogInPage({ getUsers, setAuth }) {
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -25,14 +25,15 @@ function LogInPage() {
 
   const onLogIn = (e) => {
     e.preventDefault();
-    const findUser = users.find(
-      (user) =>
-        user.email === userData.email && user.password === userData.password,
-    );
+    setAuth({ newUser: "Hello" });
+    // const users = getUsers();
 
-    findUser
-      ? console.log("The user exists")
-      : console.log("The user doesn't exists");
+    // const findUser = users.find(
+    //   (user) =>
+    //     user.email === userData.email && user.password === userData.password,
+    // );
+
+    // findUser ? login(findUser.id) : console.log("The user doesn't exists");
   };
 
   useEffect(() => {}, []);
