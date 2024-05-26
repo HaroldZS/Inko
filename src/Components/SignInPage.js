@@ -1,14 +1,39 @@
 import React, { useEffect, useState } from "react";
+import { useAuth } from "../hooks/useAuth";
 
-function SignInPage({ addUser }) {
+function SignInPage({ addUser, setAuth }) {
+  const { login } = useAuth(setAuth);
   const [repeatPassword, setRepeatPassword] = useState("");
   const [userPayload, setUserPayload] = useState({
-    id: 3,
+    id: 1,
     name: "",
     lastname: "",
     email: "",
     password: "",
     role: "user",
+    blogs: [
+      {
+        title: "The Art of Productivity",
+        subTitle: "Maximizing Your Time and Energy",
+        image:
+          "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        id: 1,
+      },
+      {
+        title: "Exploring the Mind",
+        subTitle: "Strategies for Mental and Emotional Well-being",
+        image:
+          "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        id: 2,
+      },
+      {
+        title: "Purposeful Travel",
+        subTitle: "Discovering Off-the-Beaten-Path Destinations",
+        image:
+          "https://images.pexels.com/photos/2787341/pexels-photo-2787341.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        id: 3,
+      },
+    ],
   });
 
   const setName = (e) =>
@@ -42,6 +67,7 @@ function SignInPage({ addUser }) {
     if (userPayload.password === repeatPassword) {
       console.log("Created user");
       addUser(userPayload);
+      login(userPayload);
     } else {
       console.log("Incorrect password match");
     }
