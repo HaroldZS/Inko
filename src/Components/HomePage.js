@@ -46,7 +46,7 @@ function HomePage({ getAuth }) {
                   className="h-[35px] w-[35px] rounded-full border-2 border-[#EEEEEE]/20"
                   alt="user"
                 />
-                <div className="">
+                <div>
                   <p className="text-[12px] font-semibold text-[#76ABAE]">
                     {blog.title}
                   </p>

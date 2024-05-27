@@ -24,7 +24,7 @@ function App() {
         <Menu getAuth={getAuth} setAuth={setAuth} />
         <Routes>
           <Route path="/" element={<HomePage getAuth={getAuth} />} />
-          <Route path="/blogs" element={<BlogPage />} />
+          <Route path="/blogs" element={<BlogPage getUsers={getUsers} />} />
           <Route path="/test" element={<TestPage />} />
           <Route
             path="/log-in"
