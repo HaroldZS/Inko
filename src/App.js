@@ -8,12 +8,10 @@ import { SignInPage } from "./Components/SignInPage";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 
 function App() {
-  const {
-    item,
-    getStorageItem: getUsers,
-    setStorageItem,
-    addItem: addUser,
-  } = useLocalStorage("users", []);
+  const { getStorageItem: getUsers, addItem: addUser } = useLocalStorage(
+    "users",
+    [],
+  );
 
   const { getStorageItem: getAuth, addItem: setAuth } = useLocalStorage(
     "auth",
@@ -23,10 +21,10 @@ function App() {
   return (
     <>
       <HashRouter>
-        <Menu />
+        <Menu getAuth={getAuth} setAuth={setAuth} />
         <Routes>
           <Route path="/" element={<HomePage getAuth={getAuth} />} />
-          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blogs" element={<BlogPage />} />
           <Route path="/test" element={<TestPage />} />
           <Route
             path="/log-in"

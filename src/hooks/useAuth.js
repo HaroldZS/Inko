@@ -7,11 +7,8 @@ function useAuth(setAuth) {
     navigate("/");
   };
 
-  const logout = () => {
-    setAuth({});
-    navigate("/");
-  };
-
+  const logout = () => setAuth({});
+  
   return { login, logout };
 }
 
