@@ -6,6 +6,7 @@ import { LogInPage } from "./Components/LogInPage";
 import { TestPage } from "./Components/TestPage";
 import { SignInPage } from "./Components/SignInPage";
 import { useLocalStorage } from "./hooks/useLocalStorage";
+import { NewBlog } from "./Components/NewBlog";
 
 function App() {
   const { getStorageItem: getUsers, addItem: addUser } = useLocalStorage(
@@ -34,6 +35,7 @@ function App() {
             path="/sign-in"
             element={<SignInPage addUser={addUser} setAuth={setAuth} />}
           />
+          <Route path="new-blog" element={<NewBlog />} />
         </Routes>
       </HashRouter>
     </>
