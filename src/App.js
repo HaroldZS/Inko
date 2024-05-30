@@ -9,10 +9,11 @@ import { useLocalStorage } from "./hooks/useLocalStorage";
 import { NewBlog } from "./Components/NewBlog";
 
 function App() {
-  const { getStorageItem: getUsers, addItem: addUser } = useLocalStorage(
-    "users",
-    [],
-  );
+  const {
+    getStorageItem: getUsers,
+    addItem: addUser,
+    setStorageItem: updateUsers,
+  } = useLocalStorage("users", []);
 
   const { getStorageItem: getAuth, addItem: setAuth } = useLocalStorage(
     "auth",
@@ -35,7 +36,16 @@ function App() {
             path="/sign-in"
             element={<SignInPage addUser={addUser} setAuth={setAuth} />}
           />
-          <Route path="new-blog" element={<NewBlog />} />
+          <Route
+            path="new-blog"
+            element={
+              <NewBlog
+                getAuth={getAuth}
+                getUsers={getUsers}
+                updateUsers={updateUsers}
+              />
+            }
+          />
         </Routes>
       </HashRouter>
     </>
