@@ -43,6 +43,7 @@ function App() {
                 getAuth={getAuth}
                 getUsers={getUsers}
                 updateUsers={updateUsers}
+                setAuth={setAuth}
               />
             }
           />

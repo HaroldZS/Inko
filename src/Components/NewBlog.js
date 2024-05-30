@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { getRandomId } from "../utils/getRandomId";
 
-function NewBlog({ getAuth, getUsers, updateUsers }) {
+function NewBlog({ getAuth, getUsers, updateUsers, setAuth }) {
   const user = getAuth();
   const users = getUsers();
   const [blogPayload, setBlogPayload] = useState({
@@ -41,6 +41,7 @@ function NewBlog({ getAuth, getUsers, updateUsers }) {
     const findUser = users.find((item) => (item.id = user.id));
     Object.assign(findUser.blogs, user.blogs);
     updateUsers(users);
+    setAuth(user);
     console.log("Blog created!");
   };
 
