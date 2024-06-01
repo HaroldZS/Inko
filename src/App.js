@@ -1,12 +1,13 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
 import { Menu } from "./Components/Menu";
 import { HomePage } from "./Components/HomePage";
-import { BlogPage } from "./Components/BlogPage";
+import { BlogsPage } from "./Components/BlogsPage";
 import { LogInPage } from "./Components/LogInPage";
 import { TestPage } from "./Components/TestPage";
 import { SignInPage } from "./Components/SignInPage";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { NewBlog } from "./Components/NewBlog";
+import BlogDetail from "./Components/BlogDetail";
 
 function App() {
   const {
@@ -26,7 +27,11 @@ function App() {
         <Menu getAuth={getAuth} setAuth={setAuth} />
         <Routes>
           <Route path="/" element={<HomePage getAuth={getAuth} />} />
-          <Route path="/blogs" element={<BlogPage getUsers={getUsers} />} />
+          <Route path="/blogs" element={<BlogsPage getUsers={getUsers} />} />
+          <Route
+            path="/blogs/:slug"
+            element={<BlogDetail getUsers={getUsers} />}
+          />
           <Route path="/test" element={<TestPage />} />
           <Route
             path="/log-in"

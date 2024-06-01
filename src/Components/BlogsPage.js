@@ -1,6 +1,6 @@
 import React from "react";
 
-function BlogPage({ getUsers }) {
+function BlogsPage({ getUsers }) {
   const users = getUsers();
 
   return (
@@ -33,4 +33,4 @@ function BlogPage({ getUsers }) {
   );
 }
 
-export { BlogPage };
+export { BlogsPage };
