@@ -40,8 +40,11 @@ function NewBlog({ getAuth, getUsers, updateUsers, setAuth }) {
   const onSubmit = (e) => {
     e.preventDefault();
     user.blogs.push(blogPayload);
-    const findUser = users.find((item) => (item.id = user.id));
-    Object.assign(findUser.blogs, user.blogs);
+    const findUser = users.find((element) => element.id === user.id);
+    Object.assign(findUser, user);
+    console.log(user);
+    console.log(findUser);
+    console.log(users);
     updateUsers(users);
     setAuth(user);
     navigate(`/blogs/${blogPayload.id}`);
