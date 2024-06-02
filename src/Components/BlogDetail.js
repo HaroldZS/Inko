@@ -6,7 +6,6 @@ function BlogDetail({ getUsers }) {
   const users = getUsers();
   const blogs = users.map((user) => user.blogs).flat();
   const findBlog = blogs.find((blog) => blog.id === blogId);
-  console.log(findBlog);
 
   return (
     <div className="flex justify-center pt-[45px]">
@@ -37,4 +36,4 @@ function BlogDetail({ getUsers }) {
   );
 }
 
-export default BlogDetail;
+export { BlogDetail };

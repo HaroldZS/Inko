@@ -17,7 +17,10 @@ function HomePage({ getAuth }) {
             </p>
           </div>
           {user?.name ? (
-            <button className="h-[23px] rounded-[6px] border-[0.5px] border-[#EEEEEE]/20 bg-[#76ABAE] text-[10px] font-medium text-[#EEEEEE]">
+            <button
+              className="h-[23px] rounded-[6px] border-[0.5px] border-[#EEEEEE]/20 bg-[#76ABAE] text-[10px] font-medium text-[#EEEEEE]"
+              onClick={() => navigate("new-blog")}
+            >
               Wanna Ink Something
             </button>
           ) : (
@@ -40,6 +43,7 @@ function HomePage({ getAuth }) {
               <div
                 className="mb-[12px] flex h-[65px] w-auto gap-4 rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#31363F] p-2"
                 key={blog.id}
+                onClick={() => navigate(`/blogs/${blog.id}`)}
               >
                 <img
                   src={blog.image}

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { getRandomId } from "../utils/getRandomId";
+import { useNavigate } from "react-router-dom";
 
 function NewBlog({ getAuth, getUsers, updateUsers, setAuth }) {
   const user = getAuth();
   const users = getUsers();
+  const navigate = useNavigate();
   const [blogPayload, setBlogPayload] = useState({
     id: getRandomId(),
     image:
@@ -42,6 +44,7 @@ function NewBlog({ getAuth, getUsers, updateUsers, setAuth }) {
     Object.assign(findUser.blogs, user.blogs);
     updateUsers(users);
     setAuth(user);
+    navigate(`/blogs/${blogPayload.id}`);
     console.log("Blog created!");
   };
 

@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function BlogsPage({ getUsers }) {
   const users = getUsers();
+  const navigate = useNavigate();
 
   return (
     <div className="flex justify-center pt-[16px]">
@@ -11,6 +13,7 @@ function BlogsPage({ getUsers }) {
             <div
               className="mb-[12px] flex h-[65px] w-auto gap-4 rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#31363F] p-2"
               key={blog.id}
+              onClick={() => navigate(blog.id)}
             >
               <img
                 src={blog.image}

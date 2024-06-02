@@ -7,7 +7,7 @@ import { TestPage } from "./Components/TestPage";
 import { SignInPage } from "./Components/SignInPage";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { NewBlog } from "./Components/NewBlog";
-import BlogDetail from "./Components/BlogDetail";
+import { BlogDetail } from "./Components/BlogDetail";
 
 function App() {
   const {
