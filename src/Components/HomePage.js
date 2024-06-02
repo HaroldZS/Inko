@@ -41,10 +41,13 @@ function HomePage({ getAuth }) {
             </p>
             {user.blogs.map((blog) => (
               <div
-                className="mb-[12px] flex h-[65px] w-auto gap-4 rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#31363F] p-2"
+                className="relative mb-[12px] flex h-[65px] w-auto gap-4 rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#31363F] p-2"
                 key={blog.id}
                 onClick={() => navigate(`/blogs/${blog.id}`)}
               >
+                <div className="absolute right-[-9px] top-[-9px] flex h-[18px] w-[18px] items-center justify-center rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#76ABAE] text-[10px] font-medium text-[#EEEEEE]">
+                  X
+                </div>
                 <img
                   src={blog.image}
                   className="h-[35px] w-[35px] rounded-full border-2 border-[#EEEEEE]/20"
