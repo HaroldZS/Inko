@@ -37,7 +37,17 @@ function App() {
               />
             }
           />
-          <Route path="/blogs" element={<BlogsPage getUsers={getUsers} />} />
+          <Route
+            path="/blogs"
+            element={
+              <BlogsPage
+                getUsers={getUsers}
+                getAuth={getAuth}
+                setAuth={setAuth}
+                updateUsers={updateUsers}
+              />
+            }
+          />
           <Route
             path="/blogs/:slug"
             element={<BlogDetail getUsers={getUsers} />}
