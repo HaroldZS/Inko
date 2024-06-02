@@ -1,9 +1,20 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function HomePage({ getAuth }) {
+function HomePage({ getAuth, setAuth, getUsers, updateUsers }) {
   const user = getAuth();
+  const users = getUsers();
   const navigate = useNavigate();
+
+  const deleteBlog = (id) => {
+    const index = user.blogs.findIndex((blog) => blog.id === id);
+    user.blogs.splice(index, 1);
+    const findUser = users.find((element) => element.id === user.id);
+    Object.assign(findUser, user);
+    updateUsers(users);
+    setAuth(user);
+    console.log("Blog deleted");
+  };
 
   return (
     <>
@@ -45,7 +56,13 @@ function HomePage({ getAuth }) {
                 key={blog.id}
                 onClick={() => navigate(`/blogs/${blog.id}`)}
               >
-                <div className="absolute right-[-9px] top-[-9px] flex h-[18px] w-[18px] items-center justify-center rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#76ABAE] text-[10px] font-medium text-[#EEEEEE]">
+                <div
+                  className="absolute right-[-9px] top-[-9px] flex h-[18px] w-[18px] cursor-pointer items-center justify-center rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#76ABAE] text-[10px] font-medium text-[#EEEEEE]"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    deleteBlog(blog.id);
+                  }}
+                >
                   X
                 </div>
                 <img

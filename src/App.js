@@ -26,7 +26,17 @@ function App() {
       <HashRouter>
         <Menu getAuth={getAuth} setAuth={setAuth} />
         <Routes>
-          <Route path="/" element={<HomePage getAuth={getAuth} />} />
+          <Route
+            path="/"
+            element={
+              <HomePage
+                getAuth={getAuth}
+                setAuth={setAuth}
+                getUsers={getUsers}
+                updateUsers={updateUsers}
+              />
+            }
+          />
           <Route path="/blogs" element={<BlogsPage getUsers={getUsers} />} />
           <Route
             path="/blogs/:slug"
