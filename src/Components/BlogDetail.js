@@ -72,6 +72,11 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
               className={`relative flex w-fit gap-4 ${index % 2 !== 0 && "self-end"} rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#31363F] p-2`}
               key={comment.id}
             >
+              {comment.authorId === user.id && (
+                <div className="absolute right-[-9px] top-[-9px] flex h-[18px] w-[18px] cursor-pointer items-center justify-center rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#76ABAE] text-[10px] font-medium text-[#EEEEEE]">
+                  X
+                </div>
+              )}
               <img
                 src={comment.image}
                 className="h-[35px] w-[35px] rounded-full border-2 border-[#EEEEEE]/20"
