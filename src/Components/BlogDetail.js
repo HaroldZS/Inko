@@ -14,7 +14,7 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
     author: user?.name,
     authorId: user?.id,
     image: user?.image,
-    id: getRandomId(),
+    id: "",
   });
 
   const setComment = (e) => {
@@ -26,11 +26,24 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    findBlog.comments.push(commentPayload);
+    const newComment = {
+      ...commentPayload,
+      id: getRandomId(),
+    };
+    findBlog.comments.push(newComment);
     const currentUser = users.find((item) => item.id === user.id);
     setAuth(currentUser);
     updateUsers(users);
     console.log("New comment created!");
+  };
+
+  const deleteComment = (id) => {
+    const index = findBlog.comments.findIndex((comment) => comment.id === id);
+    findBlog.comments.splice(index, 1);
+    const currentUser = users.find((item) => item.id === user.id);
+    setAuth(currentUser);
+    updateUsers(users);
+    console.log("Comment deleted");
   };
 
   useEffect(() => {
@@ -66,14 +79,20 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
       </div>
 
       {findBlog?.comments.length > 0 && (
-        <div className="flex flex-col gap-4 px-4 pt-[24px]">
+        <div className="mx-auto flex w-[375px] flex-col gap-4 px-4 pt-[24px]">
           {findBlog?.comments.map((comment, index) => (
             <div
               className={`relative flex w-fit gap-4 ${index % 2 !== 0 && "self-end"} rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#31363F] p-2`}
               key={comment.id}
             >
               {comment.authorId === user.id && (
-                <div className="absolute right-[-9px] top-[-9px] flex h-[18px] w-[18px] cursor-pointer items-center justify-center rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#76ABAE] text-[10px] font-medium text-[#EEEEEE]">
+                <div
+                  className="absolute right-[-9px] top-[-9px] flex h-[18px] w-[18px] cursor-pointer items-center justify-center rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#76ABAE] text-[10px] font-medium text-[#EEEEEE]"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    deleteComment(comment.id);
+                  }}
+                >
                   X
                 </div>
               )}
