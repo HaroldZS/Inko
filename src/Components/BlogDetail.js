@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import send from "../assets/send.svg";
+import edit from "../assets/edit.svg";
 import { getRandomId } from "../utils/getRandomId";
 
 function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
@@ -84,7 +85,7 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
         <div className="mx-auto flex w-[375px] flex-col gap-4 px-4 pt-[24px]">
           {findBlog?.comments.map((comment, index) => (
             <div
-              className={`relative flex w-fit gap-4 ${index % 2 !== 0 && "self-end"} rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#31363F] p-2`}
+              className={`relative flex w-fit gap-4 ${index % 2 !== 0 && "self-end"} rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#31363F] p-2 ${comment.authorId === user.id && "pb-1 pr-1"}`}
               key={comment.id}
             >
               {comment.authorId === user.id && (
@@ -107,10 +108,17 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
                 <p className="text-[12px] font-semibold text-[#76ABAE]">
                   {comment.author}
                 </p>
-                <p className="pr-2 text-[10px] font-medium text-[#EEEEEE]">
+                <p className="pb-3 pr-2 text-[10px] font-medium text-[#EEEEEE]">
                   {comment.text}
                 </p>
               </div>
+              {comment.authorId === user.id && (
+                <img
+                  className="h-[18px] w-[18px] self-end"
+                  src={edit}
+                  alt="edit"
+                />
+              )}
             </div>
           ))}
         </div>
@@ -135,7 +143,7 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
               onChange={setComment}
             />
             <button className="flex h-[23px] w-[25px] items-center justify-center rounded-[8px] bg-[#76ABAE]">
-              <img className="h-[18px] w-[18px]" src={send} alt="Send" />
+              <img className="h-[18px] w-[18px]" src={send} alt="send" />
             </button>
           </div>
         </form>
