@@ -32,7 +32,8 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
     };
     findBlog.comments.push(newComment);
     const currentUser = users.find((item) => item.id === user.id);
-    setAuth(currentUser);
+    Object.assign(user, currentUser);
+    setAuth(user);
     updateUsers(users);
     console.log("New comment created!");
   };
@@ -41,7 +42,8 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
     const index = findBlog.comments.findIndex((comment) => comment.id === id);
     findBlog.comments.splice(index, 1);
     const currentUser = users.find((item) => item.id === user.id);
-    setAuth(currentUser);
+    Object.assign(user, currentUser);
+    setAuth(user);
     updateUsers(users);
     console.log("Comment deleted");
   };
