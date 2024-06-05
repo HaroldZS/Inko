@@ -8,8 +8,7 @@ function NewBlog({ getAuth, getUsers, updateUsers, setAuth }) {
   const navigate = useNavigate();
   const [blogPayload, setBlogPayload] = useState({
     id: getRandomId(),
-    image:
-      "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    image: user?.image,
     subTitle: "",
     title: "",
     description: "",

@@ -50,7 +50,14 @@ function App() {
           />
           <Route
             path="/blogs/:slug"
-            element={<BlogDetail getUsers={getUsers} getAuth={getAuth} />}
+            element={
+              <BlogDetail
+                getUsers={getUsers}
+                getAuth={getAuth}
+                setAuth={setAuth}
+                updateUsers={updateUsers}
+              />
+            }
           />
           <Route path="/test" element={<TestPage />} />
           <Route
