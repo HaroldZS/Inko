@@ -25,7 +25,7 @@ function BlogsPage({ getUsers, getAuth, setAuth, updateUsers }) {
               key={blog.id}
               onClick={() => navigate(blog.id)}
             >
-              {userItem.id === user.id && (
+              {(userItem.id === user.id || user.role === "admin") && (
                 <div
                   className="absolute right-[-9px] top-[-9px] flex h-[18px] w-[18px] cursor-pointer items-center justify-center rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#76ABAE] text-[10px] font-medium text-[#EEEEEE]"
                   onClick={(e) => {

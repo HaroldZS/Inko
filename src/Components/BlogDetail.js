@@ -113,7 +113,7 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
               className={`relative flex w-fit gap-4 ${index % 2 !== 0 && "self-end"} rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#31363F] p-2 ${comment.authorId === user.id && "pb-1 pr-1"}`}
               key={comment.id}
             >
-              {comment.authorId === user.id && (
+              {(comment.authorId === user.id || user.role === "admin") && (
                 <div
                   className="absolute right-[-9px] top-[-9px] flex h-[18px] w-[18px] cursor-pointer items-center justify-center rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#76ABAE] text-[10px] font-medium text-[#EEEEEE]"
                   onClick={(e) => {
