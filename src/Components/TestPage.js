@@ -1,11 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 function TestPage() {
   const [openMenu, setOpenMenu] = useState(false);
-
-  useEffect(() => {
-    console.log(openMenu);
-  }, [openMenu]);
 
   const toogleMenu = () => {
     setOpenMenu((prevState) => !prevState);
@@ -39,8 +35,6 @@ function TestPage() {
                   openMenu
                     ? "translate-x-0 sm:w-full md:w-1/2 lg:w-2/5 xl:w-2/5"
                     : "translate-x-full sm:w-full md:w-1/2 lg:w-2/5 xl:w-2/5"
-                  //   "translate-x-0 w-[500px]"
-                  // : "translate-x-full w-[500px]"
                 }`}
               >
                 <div

@@ -13,7 +13,6 @@ function HomePage({ getAuth, setAuth, getUsers, updateUsers }) {
     Object.assign(findUser, user);
     updateUsers(users);
     setAuth(user);
-    console.log("Blog deleted");
   };
 
   return (
@@ -44,7 +43,7 @@ function HomePage({ getAuth, setAuth, getUsers, updateUsers }) {
           )}
         </div>
       </div>
-      {user?.blogs && (
+      {user?.blogs.length > 0 && (
         <div className="mt-[24px] flex justify-center">
           <div className="grid w-[343px] grid-cols-1">
             <p className="mb-[16px] text-[10px] font-medium text-[#EEEEEE]">

@@ -13,7 +13,6 @@ function BlogsPage({ getUsers, getAuth, setAuth, updateUsers }) {
     Object.assign(findUser, user);
     updateUsers(users);
     setAuth(user);
-    console.log("Blog deleted");
   };
 
   return (

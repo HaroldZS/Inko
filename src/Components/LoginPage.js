@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 
 function LogInPage({ getUsers, setAuth }) {
@@ -36,8 +36,6 @@ function LogInPage({ getUsers, setAuth }) {
 
     findUser ? login(findUser) : console.log("The user doesn't exists");
   };
-
-  useEffect(() => {}, []);
 
   return (
     <div className="flex justify-center pt-[42px]">

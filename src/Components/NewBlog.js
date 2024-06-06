@@ -41,13 +41,9 @@ function NewBlog({ getAuth, getUsers, updateUsers, setAuth }) {
     user.blogs.push(blogPayload);
     const findUser = users.find((element) => element.id === user.id);
     Object.assign(findUser, user);
-    console.log(user);
-    console.log(findUser);
-    console.log(users);
     updateUsers(users);
     setAuth(user);
     navigate(`/blogs/${blogPayload.id}`);
-    console.log("Blog created!");
   };
 
   return (

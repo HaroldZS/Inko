@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import send from "../assets/send.svg";
 import edit from "../assets/edit.svg";
@@ -46,7 +46,6 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
     setAuth(user);
     updateUsers(users);
     resetComment();
-    console.log("New comment created!");
   };
 
   const deleteComment = (id) => {
@@ -56,7 +55,6 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
     Object.assign(user, currentUser);
     setAuth(user);
     updateUsers(users);
-    console.log("Comment deleted");
   };
 
   const editComment = (id, lastComment) => {
@@ -78,12 +76,7 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
     updateUsers(users);
     setEditingId(null);
     resetComment();
-    console.log("Comment edited!");
   };
-
-  useEffect(() => {
-    // console.log(commentPayload.text);
-  }, [commentPayload]);
 
   return (
     <>
@@ -114,7 +107,7 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
       </div>
 
       {findBlog?.comments.length > 0 && (
-        <div className="mx-auto flex w-[375px] flex-col gap-4 px-4 pt-[24px]">
+        <div className="mx-auto flex w-[375px] flex-col gap-4 px-4 pt-[24px] mb-[71px]">
           {findBlog?.comments.map((comment, index) => (
             <div
               className={`relative flex w-fit gap-4 ${index % 2 !== 0 && "self-end"} rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#31363F] p-2 ${comment.authorId === user.id && "pb-1 pr-1"}`}

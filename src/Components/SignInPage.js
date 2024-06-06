@@ -52,7 +52,6 @@ function SignInPage({ addUser, setAuth }) {
   const onSubmit = (e) => {
     e.preventDefault();
     if (userPayload.password === repeatPassword && userPayload.password) {
-      console.log("Created user");
       addUser(userPayload);
       login(userPayload);
     } else {
