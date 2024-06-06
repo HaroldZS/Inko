@@ -8,6 +8,7 @@ import { SignInPage } from "./Components/SignInPage";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { NewBlog } from "./Components/NewBlog";
 import { BlogDetail } from "./Components/BlogDetail";
+import { AuthRoute } from "./Components/AuthRoute";
 
 function App() {
   const {
@@ -59,7 +60,6 @@ function App() {
               />
             }
           />
-          <Route path="/test" element={<TestPage />} />
           <Route
             path="/log-in"
             element={<LogInPage getUsers={getUsers} setAuth={setAuth} />}
@@ -77,6 +77,14 @@ function App() {
                 updateUsers={updateUsers}
                 setAuth={setAuth}
               />
+            }
+          />
+          <Route
+            path="test"
+            element={
+              <AuthRoute getAuth={getAuth} roles={["tester"]}>
+                <TestPage />
+              </AuthRoute>
             }
           />
         </Routes>

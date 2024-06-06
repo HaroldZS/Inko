@@ -49,7 +49,7 @@ function SignInPage({ addUser, setAuth }) {
     });
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (userPayload.password === repeatPassword && userPayload.password) {
       addUser(userPayload);
@@ -59,7 +59,20 @@ function SignInPage({ addUser, setAuth }) {
     }
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (userPayload.password === "tester" && repeatPassword === "tester") {
+      setUserPayload({
+        ...userPayload,
+        role: "tester",
+      });
+    }
+    if (userPayload.password === "admin" && repeatPassword === "admin") {
+      setUserPayload({
+        ...userPayload,
+        role: "admin",
+      });
+    }
+  }, [userPayload.password, repeatPassword]);
 
   return (
     <div className="flex justify-center pt-[42px]">

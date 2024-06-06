@@ -106,8 +106,8 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
         </div>
       </div>
 
-      {findBlog?.comments.length > 0 && (
-        <div className="mx-auto flex w-[375px] flex-col gap-4 px-4 pt-[24px] mb-[71px]">
+      {findBlog?.comments?.length > 0 && (
+        <div className="mx-auto mb-[71px] flex w-[375px] flex-col gap-4 px-4 pt-[24px]">
           {findBlog?.comments.map((comment, index) => (
             <div
               className={`relative flex w-fit gap-4 ${index % 2 !== 0 && "self-end"} rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#31363F] p-2 ${comment.authorId === user.id && "pb-1 pr-1"}`}
