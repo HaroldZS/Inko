@@ -5,6 +5,7 @@ import edit from "../assets/edit.svg";
 import { getRandomId } from "../utils/getRandomId";
 
 function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
+  const [editingId, setEditingId] = useState(null);
   const { slug: blogId } = useParams();
   const users = getUsers();
   const user = getAuth();
@@ -47,6 +48,10 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
     setAuth(user);
     updateUsers(users);
     console.log("Comment deleted");
+  };
+
+  const editComment = (id) => {
+    setEditingId(id);
   };
 
   useEffect(() => {
@@ -109,7 +114,7 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
                   {comment.author}
                 </p>
                 <p className="pb-3 pr-2 text-[10px] font-medium text-[#EEEEEE]">
-                  {comment.text}
+                  {editingId === comment.id ? "Editing..." : comment.text}
                 </p>
               </div>
               {comment.authorId === user.id && (
@@ -117,6 +122,7 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
                   className="h-[18px] w-[18px] self-end"
                   src={edit}
                   alt="edit"
+                  onClick={() => editComment(comment.id)}
                 />
               )}
             </div>
