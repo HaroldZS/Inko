@@ -4,6 +4,14 @@ import send from "../assets/send.svg";
 import edit from "../assets/edit.svg";
 import { getRandomId } from "../utils/getRandomId";
 
+const commentInitialState = (user) => ({
+  text: "",
+  author: user?.name,
+  authorId: user?.id,
+  image: user?.image,
+  id: "",
+});
+
 function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
   const [editingId, setEditingId] = useState(null);
   const { slug: blogId } = useParams();
@@ -11,13 +19,13 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
   const user = getAuth();
   const blogs = users.map((user) => user.blogs).flat();
   const findBlog = blogs.find((blog) => blog.id === blogId);
-  const [commentPayload, setCommentPayload] = useState({
-    text: "",
-    author: user?.name,
-    authorId: user?.id,
-    image: user?.image,
-    id: "",
-  });
+  const [commentPayload, setCommentPayload] = useState(
+    commentInitialState(user),
+  );
+
+  const resetComment = () => {
+    setCommentPayload(commentInitialState(user));
+  };
 
   const setComment = (e) => {
     setCommentPayload({
@@ -37,6 +45,7 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
     Object.assign(user, currentUser);
     setAuth(user);
     updateUsers(users);
+    resetComment();
     console.log("New comment created!");
   };
 
@@ -68,6 +77,7 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
     setAuth(user);
     updateUsers(users);
     setEditingId(null);
+    resetComment();
     console.log("Comment edited!");
   };
 
