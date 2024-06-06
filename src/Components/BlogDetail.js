@@ -26,7 +26,7 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
     });
   };
 
-  const onSubmit = (e) => {
+  const onCommentSubmit = (e) => {
     e.preventDefault();
     const newComment = {
       ...commentPayload,
@@ -50,8 +50,25 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
     console.log("Comment deleted");
   };
 
-  const editComment = (id) => {
+  const editComment = (id, lastComment) => {
     setEditingId(id);
+    setCommentPayload({
+      ...lastComment,
+    });
+  };
+
+  const onEditSubmit = (e) => {
+    e.preventDefault();
+    const lastComment = findBlog.comments.find(
+      (comment) => comment.id === editingId,
+    );
+    Object.assign(lastComment, commentPayload);
+    const currentUser = users.find((item) => item.id === user.id);
+    Object.assign(user, currentUser);
+    setAuth(user);
+    updateUsers(users);
+    setEditingId(null);
+    console.log("Comment edited!");
   };
 
   useEffect(() => {
@@ -122,7 +139,7 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
                   className="h-[18px] w-[18px] self-end"
                   src={edit}
                   alt="edit"
-                  onClick={() => editComment(comment.id)}
+                  onClick={() => editComment(comment.id, comment)}
                 />
               )}
             </div>
@@ -133,7 +150,7 @@ function BlogDetail({ getUsers, getAuth, setAuth, updateUsers }) {
       {user?.image && (
         <form
           className="fixed bottom-0 h-[55px] w-full bg-[#31363F]"
-          onSubmit={onSubmit}
+          onSubmit={!editingId ? onCommentSubmit : onEditSubmit}
         >
           <div className="absolute bottom-[12px] flex w-full justify-center gap-4 px-4">
             <img
