@@ -8,7 +8,11 @@ import { SignInPage } from "./Components/SignInPage";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { NewBlog } from "./Components/NewBlog";
 import { BlogDetail } from "./Components/BlogDetail";
-import { AuthRoute } from "./Components/AuthRoute";
+import {
+  AuthRoute,
+  OnlyPublicRoute,
+  PrivateRoute,
+} from "./Components/AuthRoute";
 import { inkoInitialState } from "./data/inkoInitialState";
 
 function App() {
@@ -63,21 +67,31 @@ function App() {
           />
           <Route
             path="/log-in"
-            element={<LogInPage getUsers={getUsers} setAuth={setAuth} />}
+            element={
+              <OnlyPublicRoute getAuth={getAuth}>
+                <LogInPage getUsers={getUsers} setAuth={setAuth} />
+              </OnlyPublicRoute>
+            }
           />
           <Route
             path="/sign-in"
-            element={<SignInPage addUser={addUser} setAuth={setAuth} />}
+            element={
+              <OnlyPublicRoute getAuth={getAuth}>
+                <SignInPage addUser={addUser} setAuth={setAuth} />
+              </OnlyPublicRoute>
+            }
           />
           <Route
             path="new-blog"
             element={
-              <NewBlog
-                getAuth={getAuth}
-                getUsers={getUsers}
-                updateUsers={updateUsers}
-                setAuth={setAuth}
-              />
+              <PrivateRoute getAuth={getAuth}>
+                <NewBlog
+                  getAuth={getAuth}
+                  getUsers={getUsers}
+                  updateUsers={updateUsers}
+                  setAuth={setAuth}
+                />
+              </PrivateRoute>
             }
           />
           <Route
@@ -86,6 +100,17 @@ function App() {
               <AuthRoute getAuth={getAuth} roles={["tester"]}>
                 <TestPage />
               </AuthRoute>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <HomePage
+                getAuth={getAuth}
+                setAuth={setAuth}
+                getUsers={getUsers}
+                updateUsers={updateUsers}
+              />
             }
           />
         </Routes>

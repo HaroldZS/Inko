@@ -11,4 +11,24 @@ function AuthRoute({ getAuth, children, roles }) {
   return <Navigate to="/" replace />;
 }
 
-export { AuthRoute };
+function OnlyPublicRoute({ getAuth, children }) {
+  const user = getAuth();
+
+  if (!user.role) {
+    return children;
+  }
+
+  return <Navigate to="/" replace />;
+}
+
+function PrivateRoute({ getAuth, children }) {
+  const user = getAuth();
+
+  if (user.role) {
+    return children;
+  }
+
+  return <Navigate to="/" replace />;
+}
+
+export { AuthRoute, OnlyPublicRoute, PrivateRoute };
