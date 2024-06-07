@@ -9,13 +9,14 @@ import { useLocalStorage } from "./hooks/useLocalStorage";
 import { NewBlog } from "./Components/NewBlog";
 import { BlogDetail } from "./Components/BlogDetail";
 import { AuthRoute } from "./Components/AuthRoute";
+import { inkoInitialState } from "./data/inkoInitialState";
 
 function App() {
   const {
     getStorageItem: getUsers,
     addItem: addUser,
     setStorageItem: updateUsers,
-  } = useLocalStorage("users", []);
+  } = useLocalStorage("users", inkoInitialState);
 
   const { getStorageItem: getAuth, addItem: setAuth } = useLocalStorage(
     "auth",

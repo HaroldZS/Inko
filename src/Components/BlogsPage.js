@@ -18,8 +18,8 @@ function BlogsPage({ getUsers, getAuth, setAuth, updateUsers }) {
   return (
     <div className="flex justify-center pt-[16px]">
       <div className="grid w-[343px] grid-cols-1">
-        {users.map((userItem) =>
-          userItem.blogs.map((blog) => (
+        {users?.map((userItem) =>
+          userItem?.blogs.map((blog) => (
             <div
               className="relative mb-[12px] flex h-[65px] w-auto gap-4 rounded-[8px] border-[0.5px] border-[#EEEEEE]/20 bg-[#31363F] p-2"
               key={blog.id}
