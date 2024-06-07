@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Inko/static/css/main.26e7796a.css",
+    "main.js": "/Inko/static/js/main.1e19c280.js",
+    "static/media/send.svg": "/Inko/static/media/send.67bd8af2d131c885a78c617d62ea0e86.svg",
+    "index.html": "/Inko/index.html",
+    "static/media/edit.svg": "/Inko/static/media/edit.463b3708961b802da8d1080f22f5dc96.svg",
+    "main.26e7796a.css.map": "/Inko/static/css/main.26e7796a.css.map",
+    "main.1e19c280.js.map": "/Inko/static/js/main.1e19c280.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.26e7796a.css",
+    "static/js/main.1e19c280.js"
+  ]
+}
